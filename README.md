@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# furniture store app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sideland : **## shop products online**
 
-## Available Scripts
+> ### Overview :
 
-In the project directory, you can run:
+- Your experience, your aptitude all about the skills that base your talent or what you might be able to do, unified in a steady one file that represents the trend mark used to land job.
+- Be able to market yourself is one of he most usefull skill that you need to learn.
 
-### `npm start`
+## Interest
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You might be interested on how:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- to implement linked page with `react-router-dom` on _react_
 
-### `npm test`
+- or use `bootstrap` inside a _react project_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Links
 
-### `npm run build`
+- Solution URL: [https://github.com/BeinRain06/resume-portfolio-one.git](https://github.com/BeinRain06/resume-portfolio-one.git)
+- Live Site URL: [https://beinrain06.github.io/resume-portfolio-one/](https://beinrain06.github.io/resume-portfolio-one/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description : \* challenge issue
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**usecontext Hook**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> I review `usecontext hook`.It was once again challenging like i didn't get well the concept first when i learned and implemented it.
+>
+> **analyzing**
 
-### `npm run eject`
+1.  Here is What I figured out. **Usecontext** solve the problem to store some **data** thats more than **one component** are in need to use. These data can be **fetched API data** or some **state data** that changes is allowed using some events like _onClick_, _onMouseOver_, _onInput_, and many others. **state data changes** is made barely in react using `useState Hook` or `useReducer` .
+2.  three essentials spices needs to used in a such a way to achieve good implementation of _useContext Hook_ :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    - a function (e.g_name : AppContext) that **creates** our dealing context using `createContext` from **React** Library
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+      - e.g
+      - `export const AppContext = createContext();`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    - a function (e.g\*name : AppContextProvider) that **handles** \*\*\_state data changes**\* and **specifies** returned **values\*\* we want to made available for the all entire bunch of components we have.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- e.g:
 
-## Learn More
+  > `export const AppContextProvider(props) => { const [toggle, setToggle] = useState(false); const [isHovered, setHover] = useState(false);
+const isToggled = () => { setToggle(!toggle); console.log(toggle);}; const setHoverFunction = () => {setHover(!isHovered); };const contextValue = { isToggled, setHoverFunction, toggle, isHovered }; return (
+<AppContext.Provider value={contextValue}>
+{props.children}
+</AppContext.Provider>
+);
+};`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- variables we need called in a **destructuring syntax** in specific components in demands
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Brief think of :
+   - `createContext`and `useState`in the same file (e.g: AppContext.js) and
+   - `destructuring syntax variables` and `useContext` in any of the components on demands of these public data.
+   -
 
-### Code Splitting
+## CSS Structures:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> - <App/> main component connect to node handle all the javascript need to display all our **related webpages** ,
 
-### Analyzing the Bundle Size
+> four main components :
+> -Profile.jsx, Skills.jsx, Experience.jsx, Education.jsx, submit.ejs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Picture**
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![./Desktop-Resume-Portfolio-One.png](./Desktop-Resume-Portfolio-One.png)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# What I learned
 
-### Deployment
+### Use Bootstrap Classes in React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+All we need to do is to install bootstrap and import **minified version** of css and js in the **indexjs** file of our project.
+After that we can use and learn about classes of bootstrap in the source website : [https://getbootstrap.com](https://getbootstrap.com)
+Like this:
 
-### `npm run build` fails to minify
+- command(inside our directory project) : npm install bootstrap
+- add :
+  - import "bootstrap/dist/css/bootstrap.min.css";
+  - import "bootstrap/dist/js/bootstrap.bundle.min";
+- Use Classes you need searching over the bunch of classes given in the official website _getbootstrap.com_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### utilities Materials:
+
+    -bootstrap and bootstrap icons
+
+### Mobile Responsiveness
+
+    - Mobile reponsiveness for mobile max-width: 320px ,max-width: 626px,
+
+**Picture**
+
+---
+
+![./Mobile-Resume-Portfolio-One.png](./Mobile-Resume-Portfolio-One.png)
+
+---
+
+## Callback History:
+
+- **Portfolio** was first used for **investment**. **Harry Markowitz**(born in 1927) is a `Nobel Prize-winning` American economist best known for developing `Modern Portfolio`. **Markowitz** introduced **_Modern Portfolio_** to academic circles in his articles, `"Portfolio Selection"` in the journal of finances. His original theory was fundamentally a way to change how people and institutions **invest**.
+- Nowadays `Portfolio` are use in many various cases and especially are well know to be a document that enhances yours skills to seek for a job in a specific area or industry.
+
+## Useful Resources :
+
+- w3Schools: [https://w3schools.com/bootstrap/bootstrap_grid_system_asp](https://w3schools.com/bootstrap/bootstrap_grid_system_asp) : helps me learn quickly how to implement **css grid** using **bootstrap**
+
+- getBootstrap: [https://getbootstrap.com](https://getbootstrap.com) : resources website of bootstrap , helps us to go through the differents uses of bootstrap. And land us to implement `bootstrap grid`, `bootstrap icons`, and `bootstrap classes`
+
+## Acknowledge:
+
+This project always remember the Team :
+
+-Sufa Digital: udemy with his explanations about the 6 layers of security when registering or login to an app
+
+_Our Work always remember this team_
+
+## Author
+
+- Frontend Mentor - [https://www.frontendmentor.io/profile/BeinRain06](https://www.frontendmentor.io/profile/BeinRain06)
+- Twitter - [https://twitter.com/nest_Ngoueni](https://twitter.com/nest_Ngoueni)
