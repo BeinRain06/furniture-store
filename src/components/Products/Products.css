@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+div,
+img,
+li {
+  width: 100%;
+}
+
+@media (min-width: 230px) {
+  .products_container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .products_content {
+    width: 100%;
+    height: auto;
+  }
+  .gen_title {
+    font-size: 14px;
+  }
+
+  .product_grid {
+    display: flex;
+    flex-direction: column;
+    width: 84%;
+    height: auto;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+}
