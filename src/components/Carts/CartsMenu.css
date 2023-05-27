@@ -92,6 +92,7 @@ ul {
     width: 250px;
     justify-content: center;
     align-items: center;
+    gap: 0.35rem;
   }
 }
 
@@ -163,9 +164,15 @@ ul {
     width: 250px;
     flex-direction: row;
     text-align: center;
-    gap: 0.1rem;
+    gap: 1rem;
     background-color: rgb(71, 126, 9);
     padding: 6px 0;
     margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carts_container_menu {
+    width: 28vw;
   }
 }

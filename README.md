@@ -107,7 +107,7 @@ root.render(
 
 ---
 
-![./Desktop-Resume-Portfolio-One.png](./Desktop-Resume-Portfolio-One.png)
+![./Desktop-Furniture-Store.png](./Desktop-Furniture-Store.png)
 
 ---
 
@@ -141,7 +141,7 @@ Drive code to **configure** our `store.js` file, **create** and **get** `state` 
 
 ---
 
-![./Mobile-Resume-Portfolio-One.png](./Mobile-Resume-Portfolio-One.png)
+![./Mobile-Furniture-Store.png](./Mobile-Furniture-Store.png)
 
 ---
 

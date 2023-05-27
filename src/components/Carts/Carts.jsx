@@ -45,10 +45,10 @@ function Carts() {
           )}
         </ul>
         <div className="entire_bill">
-          <span className="my_bill d-flex flex-center">
+          <span className="my_bill d-flex mr-2 flex-center">
             Total : {entireBill}
-            <span className="design_currency">{currency}</span>
           </span>
+          <span className="design_currency">{currency}</span>
         </div>
       </div>
     </div>

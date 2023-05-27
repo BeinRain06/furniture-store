@@ -314,3 +314,14 @@ li {
     z-index: 100;
   }
 }
+
+@media (min-width: 1200px) {
+  .product_grid {
+    width: 70%;
+  }
+
+  .carts_menu,
+  .carts_menu.showcase {
+    width: 28vw;
+  }
+}
