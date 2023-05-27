@@ -20,11 +20,20 @@ div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #d3d3d3;
+  }
+
+  .carts_desktop {
+    display: none;
   }
 }
 
 @media (min-width: 768px) {
   .App_container {
     flex-direction: row;
+  }
+
+  .carts_desktop {
+    display: block;
   }
 }

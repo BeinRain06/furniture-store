@@ -36,13 +36,15 @@ function Product({ id, name, img, quantity, price, totalPrice }) {
       <div className="product_content d-flex flex-column">
         <img src={img} alt="src_product" className="img_product" />
         <span className="title_product">{name}</span>
-        <div className="panel_cmd d-flex flex-row">
+        <div className="panel_cmd ">
           <div className="price_wrapper">
-            <span className="price">{price}</span>
-            <span className="currency">{currency}</span>
+            <div>
+              <span className="price">{price}</span>
+              <span className="currency">{currency}</span>
+            </div>
           </div>
           <button className="add_to_cart btn-success" onClick={addToCart}>
-            Add To Cart
+            Add To Cart <span></span>
             <span className="count pd-2">{quantity >= 1 && quantity}</span>
           </button>
           {quantity >= 1 && (

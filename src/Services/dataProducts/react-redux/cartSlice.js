@@ -11,8 +11,12 @@ const cartSlice = createSlice({
     currency: "EUR",
     totalQuantity: 0,
     entireBill: 0,
+    isCartShowed: false,
   },
   reducers: {
+    setCartShowed: (state, action) => {
+      state.isCartShowed = action.payload;
+    },
     addToCart: (state, action) => {
       const newItem = action.payload;
 
@@ -57,7 +61,7 @@ const cartSlice = createSlice({
         if (existingItem.quantity === 1) {
           existingItem.totalPrice -= existingItem.price;
           state.totalQuantity--;
-          state.myCartProducts.filter((item) => item.id !== newItem.id);
+          state.myCartProducts = state.myCartProducts.filter((item) => item.id !== newItem.id);
           state.productsList[index1].quantity = 0;
         } else {
           state.productsList[index1].quantity--;
@@ -69,6 +73,29 @@ const cartSlice = createSlice({
       state.entireBill = state.myCartProducts.reduce((accumulator, item) => {
         return accumulator + item.totalPrice;
       }, 0);
+    },
+    deleteOfCart: (state, action) => {
+      const newItem = action.payload;
+      const index1 = newItem.id - 1;
+
+      const existingItem = state.myCartProducts.find(
+        (item) => item.id === newItem.id
+      );
+
+      existingItem.totalPrice = 0;
+      existingItem.quantity = 0;
+      state.productsList[index1].quantity = 0;
+      console.log(state.myCartProducts);
+
+      state.totalQuantity--;
+
+      state.entireBill = state.myCartProducts.reduce((accumulator, item) => {
+        return accumulator + item.totalPrice;
+      }, 0);
+
+      state.myCartProducts = state.myCartProducts.filter(
+        (item) => item.id !== newItem.id
+      );
     },
   },
 });
@@ -83,6 +110,10 @@ export const selectMyCartProducts = (state) => {
 
 export const selectCurrency = (state) => {
   return state.furniture.currency;
+};
+
+export const selectCartShowed = (state) => {
+  return state.furniture.isCartShowed;
 };
 
 export const selectTotalQuantity = (state) => {

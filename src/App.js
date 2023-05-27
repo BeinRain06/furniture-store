@@ -8,7 +8,9 @@ function App() {
     <div className="App">
       <div className="App_container">
         <Products />
-        <Carts />
+        {/*  <div className="carts_desktop">
+          <Carts />
+        </div> */}
       </div>
     </div>
   );

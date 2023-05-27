@@ -4,63 +4,104 @@ Sideland : **## shop products online**
 
 > ### Overview :
 
-- Your experience, your aptitude all about the skills that base your talent or what you might be able to do, unified in a steady one file that represents the trend mark used to land job.
-- Be able to market yourself is one of he most usefull skill that you need to learn.
+- let's say you want to add some design in your living room, and make the space more likely. One of your big choice is about furnitures and particularly sofa that you might want to purchase . This little zebsite give you a small inside about how will look your online **furniture shop** website.
+- Hope we will enjoy it !
 
 ## Interest
 
 You might be interested on how:
 
-- to implement linked page with `react-router-dom` on _react_
+- to implement linked page with `redux` **state management** using on _@reduxjs/toolkit_
 
 - or use `bootstrap` inside a _react project_
 
 ### Links
 
-- Solution URL: [https://github.com/BeinRain06/resume-portfolio-one.git](https://github.com/BeinRain06/resume-portfolio-one.git)
-- Live Site URL: [https://beinrain06.github.io/resume-portfolio-one/](https://beinrain06.github.io/resume-portfolio-one/)
+- Solution URL: [https://github.com/BeinRain06/furniture-store.git](https://github.com/BeinRain06/furniture-store.git)
+- Live Site URL: [https://beinrain06.github.io/furniture-store/](https://beinrain06.github.io/furniture-store/)
 
 ## Description : \* challenge issue
 
-**usecontext Hook**
+**redux reducer actions**
 
-> I review `usecontext hook`.It was once again challenging like i didn't get well the concept first when i learned and implemented it.
+> Redux is particular;y famous when dealing with large scale app that have severals **data** to manage, we were willing to go through this **state management tool** and looks how it works.
 >
 > **analyzing**
 
-1.  Here is What I figured out. **Usecontext** solve the problem to store some **data** thats more than **one component** are in need to use. These data can be **fetched API data** or some **state data** that changes is allowed using some events like _onClick_, _onMouseOver_, _onInput_, and many others. **state data changes** is made barely in react using `useState Hook` or `useReducer` .
-2.  three essentials spices needs to used in a such a way to achieve good implementation of _useContext Hook_ :
+1.  Here is the part we have much had trouble **reducers** in `createSlice`
 
-    - a function (e.g_name : AppContext) that **creates** our dealing context using `createContext` from **React** Library
+    > `reducers: {
+    > addToCart: (state, action) => {
 
-      - e.g
-      - `export const AppContext = createContext();`
+        const newItem = action.payload;
 
-    - a function (e.g\*name : AppContextProvider) that **handles** \*\*\_state data changes**\* and **specifies** returned **values\*\* we want to made available for the all entire bunch of components we have.
+        const index1 = newItem.id - 1;
 
-- e.g:
+        const existingItem = state.myCartProducts.find(
+          (item) => item.id === newItem.id
+        );
 
-  > `export const AppContextProvider(props) => { const [toggle, setToggle] = useState(false); const [isHovered, setHover] = useState(false);
-const isToggled = () => { setToggle(!toggle); console.log(toggle);}; const setHoverFunction = () => {setHover(!isHovered); };const contextValue = { isToggled, setHoverFunction, toggle, isHovered }; return (
-<AppContext.Provider value={contextValue}>
-{props.children}
-</AppContext.Provider>
-);
-};`
+        if (existingItem) {
+          existingItem.quantity++;
+          existingItem.totalPrice += newItem.price;
+          state.productsList[index1].quantity++;
+          console.log(existingItem.quantity);
+          console.log(existingItem.totalPrice);
+        } else {
+          state.myCartProducts.push({
+            id: newItem.id,
+            name: newItem.name,
+            price: newItem.price,
+            quantity: 1,
+            totalPrice: newItem.price,
+          });
+          state.totalQuantity++;
+          state.productsList[index1].quantity = 1;
+        }
 
-- variables we need called in a **destructuring syntax** in specific components in demands
+        state.entireBill = state.myCartProducts.reduce((accumulator, item) => {
+          return accumulator + item.totalPrice;
+        }, 0);
 
-1. Brief think of :
-   - `createContext`and `useState`in the same file (e.g: AppContext.js) and
-   - `destructuring syntax variables` and `useContext` in any of the components on demands of these public data.
-   -
+    },
+    }`
+
+    >
+
+- because we need to `understand` really about what is `payload` and how to deal writing functions that could affect state of some variables we declared.
+- Here is what we got . **payload** is about what we need to pass to **initialize** or set actions through a given direction.
+- For example this syntya of `addToCart` in our cartSlice.js file use **payload** we push first an element to a cart `state.myCartProducts.push(**payload**)`. Here the payload is an **object** variable passed to _myCartsProducts_ array and this direction alsos move us to set **payload** at the right component **<Product/>** where the the `addToCart`es effecitively triggered :
+  - `const addToCart = () => {
+ dispatch( cartActions.addToCart({ **payload**}));
+}` >
+- **payload** is all about what you need to achieve a certain action . Payload could be a **number**, an **object**, an **array**, ...
+
+>
+
+2.  with **redux** using **@reduxjs/toolkit** we need two main files:
+
+    - the first to **conigure** our storage file `store.js` file.
+      >
+    - the second to **initialize**, **get** and **set** method to **manages** state change of our app. here that correspond to our `cartSlice.js` file.
+
+>
+
+3.  we have to provide data of our **store** to our entire application (wrap <App/> component located in `index.js` file ) using <Provider>{children}<Provider/> component.
+
+- Here it looks alike:
+- `const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);`
 
 ## CSS Structures:
 
-> - <App/> main component connect to node handle all the javascript need to display all our **related webpages** ,
-
-> four main components :
-> -Profile.jsx, Skills.jsx, Experience.jsx, Education.jsx, submit.ejs
+> two main components in your <App/>:
+> -Products.jsx, and Carts.jsx
 
 **Picture**
 
@@ -84,13 +125,17 @@ Like this:
   - import "bootstrap/dist/js/bootstrap.bundle.min";
 - Use Classes you need searching over the bunch of classes given in the official website _getbootstrap.com_
 
+### Implement React Redux for small Database
+
+Drive code to **configure** our `store.js` file, **create** and **get** `state` of variables that are likely able to change `createSlice.js` , **provide these data** to our root component (<App/> component ) under `index.js` file.
+
 ### utilities Materials:
 
     -bootstrap and bootstrap icons
 
 ### Mobile Responsiveness
 
-    - Mobile reponsiveness for mobile max-width: 320px ,max-width: 626px,
+    - Mobile reponsiveness for mobile min-width: 230px
 
 **Picture**
 
@@ -102,20 +147,32 @@ Like this:
 
 ## Callback History:
 
-- **Portfolio** was first used for **investment**. **Harry Markowitz**(born in 1927) is a `Nobel Prize-winning` American economist best known for developing `Modern Portfolio`. **Markowitz** introduced **_Modern Portfolio_** to academic circles in his articles, `"Portfolio Selection"` in the journal of finances. His original theory was fundamentally a way to change how people and institutions **invest**.
-- Nowadays `Portfolio` are use in many various cases and especially are well know to be a document that enhances yours skills to seek for a job in a specific area or industry.
+- **e-commerce** has become a trend in the years 1990's. Why ? People of that age love to grab things just by **one click!**. The first online **marketplace** the **Boston Computer exchanges** tooks place in **1982**. Over the next year Brands like **Amazon**, **Alibaba**, **venmo**, **Etsy**, **eBay**, ... has grown their base and become the most powerfull and known for e-commerce website online.
+- >
+- **one way** to enhance his enterprize in this age whatever it's a small businness or a large one is to create a presence online to stick audience and clients online. With this small step you may catch people of all area qorund the world which bumps into your website, and then quickly make benefits or increase your selling accounts.
 
 ## Useful Resources :
 
-- w3Schools: [https://w3schools.com/bootstrap/bootstrap_grid_system_asp](https://w3schools.com/bootstrap/bootstrap_grid_system_asp) : helps me learn quickly how to implement **css grid** using **bootstrap**
+- web Dev Simplified: [https://www.youtube.com/watch?v=s1XVfm5mIuU](https://www.youtube.com/watch?v=s1XVfm5mIuU) : quick reminding explanation on how to use `reduce` **method** of javasript when having array of object variables and need to access specificly a **particular** property inside;
 
-- getBootstrap: [https://getbootstrap.com](https://getbootstrap.com) : resources website of bootstrap , helps us to go through the differents uses of bootstrap. And land us to implement `bootstrap grid`, `bootstrap icons`, and `bootstrap classes`
+  >
+
+- Colt Steele: [https://www.youtube.com/watch?v=VOQSrdX82L8](https://www.youtube.com/watch?v=VOQSrdX82L8) : in a way similar the prevous video, lead me to know about others uses of `reduce` **method** of javascript inside a project.
+
+  >
+
+- freeCodeCamp.org: [https://www.youtube.com/watch?v=zrs7u6bdbUw&t=1566s](https://www.youtube.com/watch?v=zrs7u6bdbUw&t=1566s) : simply put this one was my guidelines and inspiration to how **manages** state in `react-redux` using **@reduxjs/toolkit** and it works fine. thanks you to **nikhil-thadani** of **freeCodeCamp** . Also it has a given repository under: [Nikhilthadani /
+  Redux-Shopping-Cart-App](https://github.com/Nikhilthadani/Redux-Shopping-Cart-App)
 
 ## Acknowledge:
 
 This project always remember the Team :
 
--Sufa Digital: udemy with his explanations about the 6 layers of security when registering or login to an app
+- **Sufa Digital**: udemy with his enlightment about the feature to achieve this project
+  >
+- **nikhil-thadani** : with his help with a realistic project how manage state with **redux** in react
+  >
+- **Kyle[web dev Simpliflied]** and also **Colt Sttele** that give us a brief and concise explanation about javascript **reduce** method.
 
 _Our Work always remember this team_
 
