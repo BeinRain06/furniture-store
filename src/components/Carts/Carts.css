@@ -44,9 +44,9 @@ ul {
   .account_in_carts p {
     display: flex;
     flex-direction: row;
-    width: 60%;
-    padding: 0.5rem;
-    gap: 0.35rem;
+    width: 60px;
+    padding: 0.35rem 0.1rem;
+    gap: 0.15rem;
     font-size: 14px;
   }
 
@@ -78,5 +78,14 @@ ul {
     align-items: center;
     width: 90%;
     margin: auto;
+  }
+
+  .entire_bill {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .entire_bill .my_bill {
+    margin-right: 20px;
   }
 }

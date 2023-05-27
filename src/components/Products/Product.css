@@ -9,6 +9,14 @@ div {
 }
 
 @media (min-width: 210px) {
+  .product_wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    overflow: hidden;
+  }
+
   .product_content {
     width: 100vw;
     height: 380px;
@@ -16,6 +24,7 @@ div {
     align-items: center;
     gap: 0.4rem;
     font-size: 15px;
+    overflow: hidden;
   }
 
   .img_product {

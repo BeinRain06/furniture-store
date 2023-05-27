@@ -45,7 +45,7 @@ function CartsMenu() {
           )}
         </ul>
         <div className="entire_bill">
-          <span className="my_bill  flex-center">Total : {entireBill}</span>
+          <span className="my_bill  flex-center ">Total : {entireBill}</span>
           <span className="design_currency">{currency}</span>
         </div>
       </div>

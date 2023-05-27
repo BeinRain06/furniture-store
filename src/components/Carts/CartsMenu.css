@@ -128,13 +128,17 @@ ul {
   .account_in_carts p {
     position: relative;
     top: 0.5rem;
-    right: -2.5rem;
+    right: -2rem;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 0.5rem;
   }
 
   .account_in_carts .in_carts {
     padding: 3px;
     height: auto;
-    width: 80px;
+    width: 40px;
     background: #cf2e2e;
   }
 
@@ -168,6 +172,10 @@ ul {
     background-color: rgb(71, 126, 9);
     padding: 6px 0;
     margin: 0 auto;
+  }
+
+  .entire_bill .my_bill {
+    margin-right: 10px;
   }
 }
 
