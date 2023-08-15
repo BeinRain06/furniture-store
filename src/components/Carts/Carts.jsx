@@ -18,7 +18,7 @@ function Carts() {
     <div className="carts_container col-10 col-sm-10 col-md-4">
       <div className="carts_content">
         <div className="show_carts d-flex">
-          <span className="title_carts">Shopping Cart</span>
+          <span className="title_carts">Shopping Cart </span>
           <div className="account_in_carts d-flex ">
             <p>
               Carts Items <span className="in_carts">{totalQuantity} </span>

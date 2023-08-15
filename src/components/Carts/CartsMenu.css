@@ -32,6 +32,17 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    max-height: 310px;
+    padding: 0.5rem 0;
+    background-color: #333;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .carts_container_menu::-webkit-scrollbar-track {
+    width: 8px;
+    height: 5px;
   }
 
   .show_carts {
@@ -88,8 +99,9 @@ ul {
   }
 
   .entire_bill {
+    width: 225px;
+    background-color: rgb(63, 65, 63);
     display: flex;
-    width: 250px;
     justify-content: center;
     align-items: center;
     gap: 0.35rem;
@@ -99,10 +111,15 @@ ul {
 @media (min-width: 960px) {
   .carts_container_menu {
     position: relative;
+    top: 0;
+    left: 0;
     width: 32vw;
-    height: auto;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     margin: 0 auto;
-    background-color: rgb(73, 52, 52);
+    background-color: transparent;
   }
 
   .carts_content_menu {
@@ -111,13 +128,16 @@ ul {
     left: 50%;
     transform: translate(-50%, -50%);
     gap: 3rem;
+    max-height: 100%;
+    background-color: rgb(189, 187, 187);
+    padding: 0 0 1rem;
   }
 
   .show_carts {
     width: 100%;
     height: 60px;
     justify-content: center;
-    background-color: blue;
+    background-color: rgb(61, 80, 167);
   }
 
   .title_carts {
@@ -146,14 +166,15 @@ ul {
     position: relative;
     top: 0;
     left: 0;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: rgb(140, 140, 140);
     transform: translateX(-5%);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.7rem;
-    width: 100vw;
-    margin: 0 auto;
-    background-color: black;
   }
 
   .empty_cart {
@@ -169,7 +190,7 @@ ul {
     flex-direction: row;
     text-align: center;
     gap: 1rem;
-    background-color: rgb(71, 126, 9);
+    background-color: rgb(72, 88, 52);
     padding: 6px 0;
     margin: 0 auto;
   }
